@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>doc-chat-local</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body class="dark">
+  <div id="app">
+    <!-- LEFT: Chat -->
+    <div id="chat-col">
+      <header id="chat-header">
+        <div id="brand">
+          <span id="brand-icon">◈</span>
+          <span id="brand-name">doc-chat-local</span>
+        </div>
+        <div id="header-right">
+          <span id="status-pill" class="pill pill-red">
+            <span class="dot"></span> connecting…
+          </span>
+          <button id="theme-toggle" title="Toggle theme">☀</button>
+          <button id="sidebar-toggle" title="Toggle sidebar">⊞</button>
+        </div>
+      </header>
+
+      <div id="messages" role="log" aria-live="polite"></div>
+
+      <div id="input-area">
+        <div id="input-row">
+          <textarea
+            id="question-input"
+            placeholder="Ask a question about your documents…"
+            rows="1"
+            autocomplete="off"
+          ></textarea>
+          <button id="send-btn" title="Send (Enter)">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+            </svg>
+          </button>
+        </div>
+        <div id="input-hint">Enter to send · Shift+Enter for new line</div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Sidebar -->
+    <aside id="sidebar">
+      <section class="sidebar-section" id="stats-section">
+        <div class="section-title">Index</div>
+        <div id="stats-content">
+          <div class="stat-row"><span class="stat-label">Documents</span><span id="stat-docs">—</span></div>
+          <div class="stat-row"><span class="stat-label">Chunks</span><span id="stat-chunks">—</span></div>
+          <div class="stat-row"><span class="stat-label">Storage</span><span id="stat-storage">—</span></div>
+          <div class="stat-row"><span class="stat-label">Last indexed</span><span id="stat-last">—</span></div>
+        </div>
+      </section>
+
+      <section class="sidebar-section" id="model-section">
+        <div class="section-title">Models</div>
+        <div class="stat-row"><span class="stat-label">Embed</span><span id="model-embed">—</span></div>
+        <div class="stat-row">
+          <span class="stat-label">Chat</span>
+          <select id="model-select"></select>
+        </div>
+      </section>
+
+      <section class="sidebar-section" id="index-section">
+        <div class="section-title">Index a Folder</div>
+        <div id="index-form">
+          <input type="text" id="index-path" placeholder="~/Documents/notes" />
+          <button id="index-btn">Index</button>
+        </div>
+        <div id="index-progress" style="display:none">
+          <div id="progress-bar-wrap">
+            <div id="progress-bar"></div>
+          </div>
+          <div id="progress-label">Starting…</div>
+        </div>
+      </section>
+
+      <section class="sidebar-section" id="sources-section">
+        <div class="section-title">Last Query Sources</div>
+        <div id="sources-list"><span class="muted">—</span></div>
+      </section>
+
+      <footer id="sidebar-footer">
+        doc-chat-local — <a href="https://github.com/dilates" target="_blank">github.com/dilates</a>
+      </footer>
+    </aside>
+  </div>
+
+  <!-- Source chunk popover -->
+  <div id="popover" style="display:none">
+    <div id="popover-header">
+      <span id="popover-title"></span>
+      <button id="popover-close">✕</button>
+    </div>
+    <div id="popover-meta"></div>
+    <pre id="popover-text"></pre>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

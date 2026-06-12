@@ -1,0 +1,13 @@
+[doc-chat]
+data_dir = "~/.local/share/doc-chat"
+ollama_host = "http://127.0.0.1:11434"
+embed_model = "nomic-embed-text"
+chat_model = ""              # empty = auto-detect first available model
+chunk_size_tokens = 512
+chunk_overlap_tokens = 50
+n_results = 5
+conversation_history_length = 5
+
+[doc-chat.watch]
+debounce_seconds = 2.0
+ignore_patterns = ["node_modules", ".git", "__pycache__", "venv", ".venv", "dist", "build"]
